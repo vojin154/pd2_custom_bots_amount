@@ -1,4 +1,3 @@
-
 Hooks:PreHook(MenuNodeGui, "close", "close_choose_amount_of_ai", function(self, ...)
 	Hooks:RemovePreHook("choice_crimenet_team_ai_choose_amount_of_ai_broker")
     --Hooks:RemovePreHook("choice_crimenet_team_ai_choose_amount_of_ai_lobby") 

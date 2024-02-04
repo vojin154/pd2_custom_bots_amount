@@ -24,7 +24,7 @@ if not TeammateAmountAI then
     function TeammateAmountAI:get_item(node, name)
         for i, v in ipairs(node:items()) do
             if v:parameters()["name"] == name then
-                return i --, v we dont really need v since we just care for index but i have this just incase i need it in the future ig
+                return i
             end
         end
         return nil
@@ -39,28 +39,21 @@ if not TeammateAmountAI then
             localize = false,
             filter = true
         }
-     
+
         local options = {
-            {
-                value = 1,
-                text_id = "1",
-                localize = false,
-                _meta = "option"
-            },
-            {
-                value = 2,
-                text_id = "2",
-                localize = false,
-                _meta = "option"
-            },
-            {
-                value = 3,
-                text_id = "3",
-                localize = false,
-                _meta = "option"
-            },
             type = "MenuItemMultiChoice"
         }
+
+        for i = 1, 3 do
+            local temp_table = {
+                value = i,
+                text_id = tostring(i),
+                localize = false,
+                _meta = "option"
+            }
+
+            table.insert(options, temp_table)
+        end
 
         local new_item = node:create_item(options, params)
         new_item:set_current_index(self.value)
@@ -72,8 +65,6 @@ if not TeammateAmountAI then
         local menu_index = self:get_item(node, "toggle_ai") + 1
 
         node:insert_item(new_item, menu_index)
-
-        return new_item
     end
 end
 
