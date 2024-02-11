@@ -31,6 +31,10 @@ if not TeammateAmountAI then
     end
 
     function TeammateAmountAI:create_item(node, hook)
+        if self:get_item(node, "teammate_ai_amount") then
+            return
+        end
+
         local params = {
             name = "teammate_ai_amount",
             callback = "choose_amount_team_ai",
